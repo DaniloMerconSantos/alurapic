@@ -1,3 +1,4 @@
+import { VmessageModule } from './../../shared/components/vmessage/vmessage.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PhotoModule } from './../photo/photo.module';
@@ -16,6 +17,7 @@ import { PhotoCommentsComponent } from './photo-comments/photo-comments.componen
     PhotoModule, 
     RouterModule, 
     ReactiveFormsModule,
+    VmessageModule
   ]
 })
 export class PhotoDetailsModule { }
