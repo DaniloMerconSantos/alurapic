@@ -1,8 +1,9 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4">
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
   <div class="form-group">
     <input
+      #userNameInput
       formControlName="userName"
       class="form-control"
       placeholder="user name"
@@ -39,4 +40,4 @@
   </button>
 </form>
 
-<p>Not a user?<a>Register now</a></p>
+<p>Not a user? <a [routerLink]="['signup']">Register now</a></p>
