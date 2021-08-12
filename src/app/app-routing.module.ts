@@ -1,3 +1,4 @@
+import { PhotoDetailsComponent } from './photos/photo-details/photo-details.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,6 +6,7 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
+import { AuthGaurd } from './core/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,12 +18,24 @@ const routes: Routes = [
     path: 'home', 
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
-  {path: 'user/:userName', 
+  {
+    path: 'user/:userName', 
     component: PhotoListComponent, 
     resolve: {photos: PhotoListResolver}
   },
-  {path: 'p/add', component: PhotoFormComponent},
-  {path: '**', component: NotFoundComponent},
+  {
+    path: 'p/add', 
+    component: PhotoFormComponent,
+    canActivate: [AuthGaurd]
+  },
+  {
+    path: 'p/:photoId', 
+    component: PhotoDetailsComponent
+  },
+  {
+    path: '**', 
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
