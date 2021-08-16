@@ -15,36 +15,42 @@ const routes: Routes = [
     redirectTo: 'home',
   },
   {
-    path: 'home', 
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'user/:userName', 
-    component: PhotoListComponent, 
-    resolve: {photos: PhotoListResolver}
+    path: 'user/:userName',
+    component: PhotoListComponent,
+    resolve: { photos: PhotoListResolver },
+    data: {
+      title: 'Timeline',
+    },
   },
   {
-    path: 'p/add', 
+    path: 'p/add',
     component: PhotoFormComponent,
-    canActivate: [AuthGaurd]
+    canActivate: [AuthGaurd],
+    data: {
+      title: 'Photo upload',
+    },
   },
   {
-    path: 'p/:photoId', 
-    component: PhotoDetailsComponent
+    path: 'p/:photoId',
+    component: PhotoDetailsComponent,
   },
   {
-    path: 'not-found', 
-    component: NotFoundComponent
+    path: 'not-found',
+    component: NotFoundComponent,
   },
   {
-    path: '**', 
-    redirectTo: 'not-found'
+    path: '**',
+    redirectTo: 'not-found',
   },
 ];
 
 @NgModule({
   // imports: [RouterModule.forRoot(routes, { useHash: true })],
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
