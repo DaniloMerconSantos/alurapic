@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { ErrorsModule } from './errors/errors.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LoadingComponent } from './shared/components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent
